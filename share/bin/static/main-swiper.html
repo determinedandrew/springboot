@@ -1,0 +1,327 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Share</title>
+    <link rel="shortcut icon" href="theme/icon.png" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+	
+	<!-- for mui -->
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	
+	<script src="js/jquery-1.7.2.min.js"></script>
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="css/swiper.min.css">
+ 	<!-- Swiper JS -->
+    <script src="js/swiper.min.js"></script>
+    
+    <!-- Mui CSS -->
+    <link rel="stylesheet" href="css/mui.min.css">
+    <!-- Mui JS -->
+	<script src="js/mui.min.js"></script>
+
+    
+    <style>
+	    /* Swiper styles */
+	    html, body {
+	        position: relative;
+	        height: 100%;
+	        /* disables the select */
+			 moz-user-select: -moz-none; 
+			-moz-user-select: none; 
+			-o-user-select:none; 
+			-khtml-user-select:none; 
+			-webkit-user-select:none; 
+			-ms-user-select:none; 
+			user-select:none;
+	    }
+	    body {
+	        background: #eee;
+	        font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+	        font-size: 14px;
+	        color:#000;
+	        margin: 0;
+	        padding: 0;
+	    }
+	    img { 
+	    	-webkit-touch-callout: none /* disables the callout */ 
+	    }
+	    .swiper-container {
+	        width: 100%;
+	        height: 100%;
+	        background: #000;
+	    }
+	    .swiper-slide {
+	        font-size: 18px;
+	        color:#fff;
+	        -webkit-box-sizing: border-box;
+	        box-sizing: border-box;
+	        padding: 40px 60px;
+	    }
+	    .parallax-bg {
+	        position: absolute;
+	        left: 0;
+	        top: 0;
+	        width: 250%;
+	        height: 100%;
+	        -webkit-background-size: cover;
+	        background-size: cover;
+	        background-position: center;
+	    }
+	    .swiper-slide .title {
+	        font-size: 41px;
+	        font-weight: 300;
+	    }
+	    .swiper-slide .subtitle {
+	        font-size: 21px;
+	    }
+	    .swiper-slide .text {
+	        font-size: 14px;
+	        max-width: 400px;
+	        line-height: 1.3;
+	    }
+	    
+	    /*Mui styles */
+	    
+		
+	    /*----------------mui.showLoading---------------*/
+		 .mui-show-loading {
+		    position: fixed;
+		    padding: 5px;
+		    width: 120px;
+		    min-height: 120px;
+		    top: 45%;
+		    left: 50%;
+		    margin-left: -60px;
+		    background: rgba(0, 0, 0, 0.6);
+		    text-align: center;
+		    border-radius: 5px;
+		    color: #FFFFFF;
+		    visibility: hidden;
+		    margin: 0;
+		    z-index: 2000;
+		
+		    -webkit-transition-duration: .2s;
+		    transition-duration: .2s;
+		    opacity: 0;
+		    -webkit-transform: scale(0.9) translate(-50%, -50%);
+		    transform: scale(0.9) translate(-50%, -50%);
+		    -webkit-transform-origin: 0 0;
+		    transform-origin: 0 0;
+		}
+		.mui-show-loading.loading-visible {
+		    opacity: 1;
+		    visibility: visible;
+		    -webkit-transform: scale(1) translate(-50%, -50%);
+		    transform: scale(1) translate(-50%, -50%);
+		}
+		.mui-show-loading .mui-spinner{
+		    margin-top: 24px;
+		    width: 36px;
+		    height: 36px;
+		}
+		.mui-show-loading .text {
+		    line-height: 1.6;
+		    font-family: -apple-system-font,"Helvetica Neue",sans-serif;
+		    font-size: 14px;
+		    margin: 10px 0 0;
+		    color: #fff;
+		}
+		
+		.mui-show-loading-mask {
+		  position: fixed;
+		  z-index: 1000;
+		  top: 0;
+		  right: 0;
+		  left: 0;
+		  bottom: 0;
+		}
+		.mui-show-loading-mask-hidden{
+		    display: none !important;
+		}
+
+    </style>
+</head>
+<body>
+    <!-- Swiper -->
+    <div class="swiper-container" id="main-swiper-page" >
+        <div class="parallax-bg" style="background-image:url(theme/bg-1.jpg);" data-swiper-parallax="-60%" ></div>
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <img id="play-movie" alt="电影播放" title="电影播放" src="theme/movie-1.png" 
+                width="65%" height="35%" style="margin-top:30%;margin-left:22%">
+                <div class="subtitle" style="margin-top:30%;margin-left:35%" id="play-movie">电影播放</div>
+                <div style="height:90px"></div>
+        	<font color="white" size="1px"style="margin-top:50%;margin-left:12%">GuaguaCompany-Andrew&nbsp;copyright © 2017</font>
+            </div>
+            <div class="swiper-slide">
+                <img id="share" alt="文件共享" title="文件共享" src="theme/share-1.png" 
+                width="65%" height="35%" style="margin-top:30%;margin-left:22%">
+                <div class="subtitle" style="margin-top:30%;margin-left:35%">文件共享</div>
+            </div>
+            <div class="swiper-slide">
+                <img id="blog" alt="博客广场" title="博客广场" src="theme/blog-1.png" 
+                width="65%" height="35%" style="margin-top:30%;margin-left:22%">
+                <div class="subtitle" style="margin-top:30%;margin-left:35%">博客广场</div>
+            </div>
+            <div class="swiper-slide">
+                <img id="chat" alt="聊天大厅" title="聊天大厅" src="theme/chat-1.png" 
+                width="65%" height="35%" style="margin-top:30%;margin-left:22%">
+                <div class="subtitle" style="margin-top:30%;margin-left:35%">聊天大厅</div>
+            </div>
+            <div class="swiper-slide">
+                <img id="game" alt="游戏天地" title="游戏天地" src="theme/game-1.png" 
+                width="63%" height="33%" style="margin-top:30%;margin-left:22%">
+                <div class="subtitle" style="margin-top:30%;margin-left:35%">游戏天地</div>
+            </div>
+            <div class="swiper-slide">
+                <img id="setting" alt="系统设置" title="系统设置" src="theme/setting-1.png" width="65%" height="35%" style="margin-top:30%;margin-left:22%">
+                <div class="subtitle" style="margin-top:30%;margin-left:35%">系统设置</div>
+            </div>
+        </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination swiper-pagination-white"></div>
+        <!-- <div class="swiper-button-prev swiper-button-white"></div>
+        <div class="swiper-button-next swiper-button-white"></div> -->
+    </div>
+    <!-- 播放列表相关div 涉及下拉刷新，上拉加载更多 -->
+	<div id="play-movie-list-page" style="display:none;">default hide</div>
+	<div id="play-movie-page" style="display:none;">default hide</div>
+    
+    <script type="text/javascript">
+    	/* ------------------Initialize Swiper----------------------------begin----------------------------- */
+	    var swiper = new Swiper('.swiper-container', {
+	    	loop: true,
+	        pagination: '.swiper-pagination',
+	        paginationClickable: true,
+	        nextButton: '.swiper-button-next',
+	        prevButton: '.swiper-button-prev',
+	        parallax: true,
+	        speed: 600,
+	    });
+	    /* ------------------Initialize Swiper----------------------------end----------------------------- */
+	    
+	    /* ------------------MUI Frame init----------------------------begin----------------------------- */
+	    //扩展mui.showLoading、初始化
+		(function(myMui) {
+			    //显示加载框
+			    myMui.showLoading = function(message,type) {
+			        if (myMui.os.plus && type !== 'div') {
+			        	myMui.plusReady(function() {
+			                plus.nativeUI.showWaiting(message);
+			            });
+			        } else {
+			            var html = '';
+			            html += '<i class="mui-spinner mui-spinner-white"></i>';
+			            html += '<p class="text">' + (message || "数据加载中") + '</p>';
+	
+			            //遮罩层
+			            var mask=document.getElementsByClassName("mui-show-loading-mask");
+			            if(mask.length==0){
+			                mask = document.createElement('div');
+			                mask.classList.add("mui-show-loading-mask");
+			                document.body.appendChild(mask);
+			                mask.addEventListener("touchmove", function(e){e.stopPropagation();e.preventDefault();});
+			            }else{
+			                mask[0].classList.remove("mui-show-loading-mask-hidden");
+			            }
+			            //加载框
+			            var toast=document.getElementsByClassName("mui-show-loading");
+			            if(toast.length==0){
+			                toast = document.createElement('div');
+			                toast.classList.add("mui-show-loading");
+			                toast.classList.add('loading-visible');
+			                document.body.appendChild(toast);
+			                toast.innerHTML = html;
+			                toast.addEventListener("touchmove", function(e){e.stopPropagation();e.preventDefault();});
+			            }else{
+			                toast[0].innerHTML = html;
+			                toast[0].classList.add("loading-visible");
+			            }
+			        }   
+			    };
+			  //隐藏加载框
+		      myMui.hideLoading = function(callback) {
+		        if (myMui.os.plus) {
+		        	myMui.plusReady(function() {
+		                plus.nativeUI.closeWaiting();
+		            });
+		        } 
+		        var mask=document.getElementsByClassName("mui-show-loading-mask");
+		        var toast=document.getElementsByClassName("mui-show-loading");
+		        if(mask.length>0){
+		            mask[0].classList.add("mui-show-loading-mask-hidden");
+		        }
+		        if(toast.length>0){
+		            toast[0].classList.remove("loading-visible");
+		            callback && callback();
+		        }
+		      };
+			})(mui);
+	    
+			
+			 
+			/* ------------------MUI Frame init----------------------------end----------------------------- */
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    /* ------------------app function----------------------------begin----------------------------- */
+	    //jump --- 跳转至子功能页面，由于放列表页面框架默认已加载，只做隐藏、显示处理
+	    var playMovieListIsOpen = false;
+	    $(function(){
+		    $("#play-movie,#share,#chat,#setting").click(function(){
+		    	if("play-movie"==$(this).attr("id")){
+		    		if(!playMovieListIsOpen){
+		    			mui.showLoading("正在加载..","div"); //加载文字和类型，plus环境中类型为div时强制以div方式显示
+			    		$.ajax({
+			    			url:"html/play-movie-list.html",
+			    			type:"get",
+			    			cache:true,
+			    			async: true,
+			    			data:{
+			    			},
+			    			success:function(data){
+			    				playMovieListIsOpen = true;
+			    				mui.hideLoading(loadingEndCallback);
+			    				$("#main-swiper-page").hide();
+			    				$("#play-movie-list-page").show();
+			    				$("#play-movie-list-page").html(data);
+			    			}
+			    		});
+	    				/* $("#main-swiper-page").hide();
+	    				$("#play-movie-list-page").show();
+	    				//重新刷新div内容
+	    				$("#play-movie-list-page").html($("#play-movie-list-page").html()); */
+		    		}else{
+		    			$("#main-swiper-page").hide();
+	    				$("#play-movie-list-page").show();
+		    		}
+		    	}
+		    	else if("share"==$(this).attr("id")){
+		    		//window.location.href="${serviceaddress}:8080/ms/share/list.do";
+		    	}
+		    });
+	    });
+	    //jump --- 跳转回主页方法
+	    function backHomeForPlayMovieList(hideID){
+			$("#"+hideID).hide();
+			$("#main-swiper-page").show();
+		}
+	    
+	    
+		//加载中。。显示隐藏回调函数
+		function loadingEndCallback(){
+			//alert(1);
+		}
+	    /* ------------------app function----------------------------end----------------------------- */
+
+	    
+	    
+	    
+    </script>
+</body>
+</html>

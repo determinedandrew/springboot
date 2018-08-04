@@ -1,0 +1,100 @@
+server {
+    server_name 202.5.21.96;
+    listen 80 default_server;
+    listen [::]:80 default_server ipv6only=on;
+
+    root /usr/static;
+    index index.html index.htm;
+
+    location / {
+    	index index.html index.htm;
+    }
+}
+
+
+电影分类;
+类型： 全部 爱情 喜剧 动作 剧情 科幻 恐怖 动画 惊悚 犯罪 冒险
+地区： 全部 中国 美国 欧洲 印度 其他
+年代： 全部 2018 2017 2016 2010-2015 00年代 90年代 更早
+
+
+
+<!DOCTYPE html>
+<html>
+   <head>
+          <title>HTML5-video(播放暂停视频；打开关闭声音；进度条)</title>
+          <meta charset="utf-8"/>
+   </head>
+<body>
+<video id="video1" controls="controls" width="400px" height="400px">
+    <source src="videos/demo.mp4">
+</video>
+
+<div>
+    <button onclick="enableMute()" type="button">关闭声音</button>
+    <button onclick="disableMute()" type="button">打开声音</button>
+    <button onclick="playVid()" type="button">播放视频</button>
+    <button onclick="pauseVid()" type="button">暂停视频</button>
+    <button onclick="showFull()" type="button">全屏</button><br />
+    <span>进度条:</span>
+    <progress value="0" max="0" id="pro"></progress>
+    <span>音量:</span>
+    <input type="range" min="0" max="100" value="50" onchange="setvalue()" id="ran"/>
+</div>
+
+<script>
+    var btn=document.getElementsByTagName("button");
+    var myvideo=document.getElementById("video1");
+    var pro=document.getElementById("pro");
+    var ran=document.getElementById("ran");
+
+    //关闭声音
+    function enableMute(){
+        myvideo.muted=true;
+        btn[0].disabled=true;
+        btn[1].disabled=false;
+    }
+    //打开声音
+    function disableMute(){
+        myvideo.muted=false;
+        btn[0].disabled=false;
+        btn[1].disabled=true;
+    }
+    //播放视频
+    function playVid(){
+        myvideo.play();
+        setInterval(pro1,1000);
+    }
+    //暂停视频
+    function pauseVid(){
+        myvideo.pause();
+    }
+    //全屏
+    function showFull(){
+        myvideo.webkitrequestFullscreen();
+    }
+    //进度条展示
+    function pro1(){
+        pro.max=myvideo.duration;
+        pro.value=myvideo.currentTime;
+    }
+    //拖动range进行调音量大小
+    function setvalue(){
+        myvideo.volume=ran.value/100;
+        myvideo.muted=false;
+    }
+</script>
+
+</body>
+</html>
+
+
+
+
+
+var fixedResponse = response.responseText.replace(/\\'/g, "'");
+var jsonObj = JSON.parse(fixedResponse);
+
+
+--本地化支持chrom
+start chrome.exe --allow-file-access-from-files --disable-web-security --user-data-dir="E:/shareSpace"
