@@ -8,7 +8,7 @@ public class GeneralService {
 	 * 请求格式
 	 * {requestType:getMovieList,startNo:,pageSize:,}
 	 * 
-	 * 
+	 * test
 	 * 
 	 * @description 定义基础传输协议，截取请求并分发，格式如下：
 	 * {
