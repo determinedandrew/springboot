@@ -12,7 +12,7 @@ public class GeneralService {
 	 * @description 定义基础传输协议，截取请求并分发，格式如下：
 	 * {
 	 * 
-	 * 
+	 * mybranch1
 	 * 
 	 * }
 	 * 
