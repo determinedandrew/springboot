@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.ggc.ms.dao.ICommenDao">
+	<insert id="insert">
+	</insert>
+
+
+	<delete id="deleteById">
+		delete from t_resource where reid = #{reid}
+	</delete>
+
+
+	<select id="getByCcode" resultType="CommenPO">
+		select * from t_config where
+		ccode = #{ccode}
+	</select>
+
+	<update id="update">
+		update
+		t_resource
+		set
+			showname = #{showname},
+			retype = #{retype},
+			repath = #{repath},
+			picpath = #{picpath},
+			readgrade = #{readgrade},
+			orderno = #{orderno},
+			reinfo = #{reinfo},
+			searchkey = #{searchkey},
+			info = #{info},
+			specialmark = #{specialmark},
+			author = #{author},
+			updatetime = #{updatetime}
+		where
+		reid = #{reid}
+	</update>
+
+
+</mapper>

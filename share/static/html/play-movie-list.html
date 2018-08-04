@@ -1,0 +1,344 @@
+	<!-- <link rel="stylesheet" href="../css/mui.min.css"> 可在本页可在主页-->
+	<script src="../js/mui.min.js"></script>
+	<script src="../js/mui.pullToRefresh.js"></script>
+	<script src="../js/mui.pullToRefresh.material.js"></script>
+	
+	<style>
+		/*mui styles */
+	    html,body {
+			background-color: #efeff4;
+		}
+		.mui-bar~.mui-content .mui-fullscreen {
+			top: 44px;
+			height: auto;
+		}
+		.mui-pull-top-tips {
+			position: absolute;
+			top: -20px;
+			left: 50%;
+			margin-left: -25px;
+			width: 40px;
+			height: 40px;
+			border-radius: 100%;
+			z-index: 1;
+		}
+		.mui-bar~.mui-pull-top-tips {
+			top: 24px;
+		}
+		.mui-pull-top-wrapper {
+			width: 42px;
+			height: 42px;
+			display: block;
+			text-align: center;
+			background-color: #efeff4;
+			border: 1px solid #ddd;
+			border-radius: 25px;
+			background-clip: padding-box;
+			box-shadow: 0 4px 10px #bbb;
+			overflow: hidden;
+		}
+		.mui-pull-top-tips.mui-transitioning {
+			-webkit-transition-duration: 200ms;
+			transition-duration: 200ms;
+		}
+		.mui-pull-top-tips .mui-pull-loading {
+			/*-webkit-backface-visibility: hidden;
+			-webkit-transition-duration: 400ms;
+			transition-duration: 400ms;*/
+			
+			margin: 0;
+		}
+		.mui-pull-top-wrapper .mui-icon,
+		.mui-pull-top-wrapper .mui-spinner {
+			margin-top: 7px;
+		}
+		.mui-pull-top-wrapper .mui-icon.mui-reverse {
+			/*-webkit-transform: rotate(180deg) translateZ(0);*/
+		}
+		.mui-pull-bottom-tips {
+			text-align: center;
+			background-color: #efeff4;
+			font-size: 15px;
+			line-height: 40px;
+			color: #777;
+		}
+		.mui-pull-top-canvas {
+			overflow: hidden;
+			background-color: #fafafa;
+			border-radius: 40px;
+			box-shadow: 0 4px 10px #bbb;
+			width: 40px;
+			height: 40px;
+			margin: 0 auto;
+		}
+		.mui-pull-top-canvas canvas {
+			width: 40px;
+		}
+		.mui-slider-indicator.mui-segmented-control {
+			background-color: #efeff4;
+		}
+	    
+	</style>
+		<div class="mui-bar mui-bar-nav" style="white-space:nowrap;overflow:auto;">
+			<a class="mui-icon mui-icon-left-nav mui-pull-left" id="backHome-play-movie-list" 
+				onclick="backHomeForPlayMovieList('play-movie-list-page')"></a>
+			<div class="mui-input-row mui-search" style="display:inline-block;width:85%;height:80%;margin-left:5%;">
+				<input type="search" class="mui-input-clear"  placeholder="我的名字叫可汗"/>
+			</div>
+		</div>
+		<div class="mui-content">
+			<div id="slider" class="mui-slider mui-fullscreen">
+				<div id="sliderSegmentedControl" class="mui-scroll-wrapper mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
+					<div class="mui-scroll">
+						<a class="mui-control-item mui-active" href="#item1mobile">
+							推荐
+						</a>
+						<a class="mui-control-item" href="#item2mobile">
+							中国
+						</a>
+						<a class="mui-control-item" href="#item3mobile">
+							美国
+						</a>
+						<a class="mui-control-item" href="#item4mobile">
+							欧洲
+						</a>
+						<a class="mui-control-item" href="#item5mobile">
+							印度
+						</a>
+						<a class="mui-control-item" href="#item6mobile">
+							其他
+						</a>
+					</div>
+				</div>
+				<div class="mui-slider-group">
+					<div id="item1mobile" class="mui-slider-item mui-control-content mui-active">
+						<div id="scroll1" class="mui-scroll-wrapper">
+							<div class="mui-scroll">
+								<ul class="mui-table-view" >
+									<li class="mui-table-view-cell" value="1">
+										<div class="mui-card-header mui-card-media" style="height:40vw;background-image:url(../images/cbd.jpg)"></div>
+										<div class="mui-card-footer">
+											<p style="color: #333;">我的名字叫可汗</p>
+											<p>情感|宗教|剧情</p>
+										</div>
+									</li>
+									<li class="mui-table-view-cell" value="2">
+										<div class="mui-card-header mui-card-media" style="height:40vw;background-image:url(../images/cbd.jpg)"></div>
+										<div class="mui-card-footer">
+											<p style="color: #333;">我的名字叫可汗</p>
+											<p>情感|宗教|剧情</p>
+										</div>
+									</li>
+									<li class="mui-table-view-cell" >
+										<div class="mui-card-header mui-card-media" style="height:40vw;background-image:url(../images/cbd.jpg)"></div>
+										<div class="mui-card-footer">
+											<p style="color: #333;">我的名字叫可汗</p>
+											<p>情感|宗教|剧情</p>
+										</div>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div id="item2mobile" class="mui-slider-item mui-control-content">
+						<div class="mui-scroll-wrapper">
+							<div class="mui-scroll">
+								<ul class="mui-table-view">
+									<li class="mui-table-view-cell">
+										第2个选项卡子项-1
+									</li>
+									
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div id="item3mobile" class="mui-slider-item mui-control-content">
+						<div class="mui-scroll-wrapper">
+							<div class="mui-scroll">
+								<ul class="mui-table-view">
+									<li class="mui-table-view-cell">
+										第3个选项卡子项-1
+									</li>
+									
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div id="item4mobile" class="mui-slider-item mui-control-content">
+						<div class="mui-scroll-wrapper">
+							<div class="mui-scroll">
+								<ul class="mui-table-view">
+									<li class="mui-table-view-cell">
+										第4个选项卡子项-1
+									</li>
+									
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div id="item5mobile" class="mui-slider-item mui-control-content">
+						<div class="mui-scroll-wrapper">
+							<div class="mui-scroll">
+								<ul class="mui-table-view">
+									<li class="mui-table-view-cell">
+										第5个选项卡子项-1
+									</li>
+									
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div id="item6mobile" class="mui-slider-item mui-control-content">
+						<div class="mui-scroll-wrapper">
+							<div class="mui-scroll">
+								<ul class="mui-table-view">
+									<li class="mui-table-view-cell">
+										第6个选项卡子项-1
+									</li>
+									
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript">
+			
+			(function(myMui) {
+				//阻尼系数
+				var deceleration = mui.os.ios?0.003:0.0009;
+				myMui('.mui-scroll-wrapper').scroll({
+					bounce: false,
+					indicators: true, //是否显示滚动条
+					deceleration:deceleration
+				});
+				//显示加载框
+			    myMui.showLoading = function(message,type) {
+			        if (myMui.os.plus && type !== 'div') {
+			        	myMui.plusReady(function() {
+			                plus.nativeUI.showWaiting(message);
+			            });
+			        } else {
+			            var html = '';
+			            html += '<i class="mui-spinner mui-spinner-white"></i>';
+			            html += '<p class="text">' + (message || "数据加载中") + '</p>';
+			            //遮罩层
+			            var mask=document.getElementsByClassName("mui-show-loading-mask");
+			            if(mask.length==0){
+			                mask = document.createElement('div');
+			                mask.classList.add("mui-show-loading-mask");
+			                document.body.appendChild(mask);
+			                mask.addEventListener("touchmove", function(e){e.stopPropagation();e.preventDefault();});
+			            }else{
+			                mask[0].classList.remove("mui-show-loading-mask-hidden");
+			            }
+			            //加载框
+			            var toast=document.getElementsByClassName("mui-show-loading");
+			            if(toast.length==0){
+			                toast = document.createElement('div');
+			                toast.classList.add("mui-show-loading");
+			                toast.classList.add('loading-visible');
+			                document.body.appendChild(toast);
+			                toast.innerHTML = html;
+			                toast.addEventListener("touchmove", function(e){e.stopPropagation();e.preventDefault();});
+			            }else{
+			                toast[0].innerHTML = html;
+			                toast[0].classList.add("loading-visible");
+			            }
+			        }   
+			    };
+				  //隐藏加载框
+			      myMui.hideLoading = function(callback) {
+			        if (myMui.os.plus) {
+			        	myMui.plusReady(function() {
+			                plus.nativeUI.closeWaiting();
+			            });
+			        } 
+			        var mask=document.getElementsByClassName("mui-show-loading-mask");
+			        var toast=document.getElementsByClassName("mui-show-loading");
+			        if(mask.length>0){
+			            mask[0].classList.add("mui-show-loading-mask-hidden");
+			        }
+			        if(toast.length>0){
+			            toast[0].classList.remove("loading-visible");
+			            callback && callback();
+			        }
+			      };
+				
+				myMui.ready(function() {
+					//循环初始化所有下拉刷新，上拉加载。
+					myMui.each(document.querySelectorAll('.mui-slider-group .mui-scroll'), function(index, pullRefreshEl) {
+						myMui(pullRefreshEl).pullToRefresh({
+							down: {
+								callback: function() {
+									var self = this;
+									setTimeout(function() {
+										var ul = self.element.querySelector('.mui-table-view');
+										ul.insertBefore(createFragment(ul, index, 3, true), ul.firstChild);
+										self.endPullDownToRefresh();
+									}, 1000);
+								}
+							},
+							up: {
+								callback: function() {
+									var self = this;
+									setTimeout(function() {
+										var ul = self.element.querySelector('.mui-table-view');
+										ul.appendChild(createFragment(ul, index, 5));
+										self.endPullUpToRefresh();
+									}, 1000);
+								}
+							}
+						});
+					});
+					var createFragment = function(ul, index, count, reverse) {
+						var length = ul.querySelectorAll('li').length;
+						var fragment = document.createDocumentFragment();
+						var li;
+						for (var i = 0; i < count; i++) {
+							li = document.createElement('li');
+							li.className = 'mui-table-view-cell';
+							li.innerHTML = '第' + (index + 1) + '个选项卡子项-' + (length + (reverse ? (count - i) : (i + 1)));
+							fragment.appendChild(li);
+						}
+						return fragment;
+					};
+				});
+			})(mui);
+			mui.init(); 
+			
+			//jump --- 跳转至播放页面，如果跳转过则不再请求静态资源
+			var playMovieIsOpen = false;
+			function gotoPlayMovie(){
+				//将mid赋值给全局变量用来穿参
+				if(!playMovieIsOpen){
+					mui.showLoading("正在加载..","div"); //加载文字和类型，plus环境中类型为div时强制以div方式显示
+		    		$.ajax({
+		    			url:"html/play-movie.html",
+		    			type:"get",
+		    			cache:true,
+		    			async: true,
+		    			data:{
+		    			},
+		    			success:function(data){
+		    				$("#play-movie-list-page").hide();
+		    				$("#play-movie-page").show();
+		    				$("#play-movie-page").html(data);
+		    				playMovieIsOpen = true;
+		    				mui.hideLoading(loadingEndCallback);
+		    			}
+		    		});
+	    		}else{
+	    			$("#play-movie-list-page").hide();
+					$("#play-movie-page").show();
+	    		}
+			}
+			//mui下拉刷新不支持click、tap 只能用jquery来解决
+			$(".mui-table-view-cell").on("tap",function(){
+				var str = $(this).attr("value");
+				gotoPlayMovie();
+			});
+			
+		</script>
+		

@@ -1,0 +1,101 @@
+<!--App自定义的css-->
+<!-- <link rel="stylesheet" type="text/css" href="../css/app.css" /> -->
+		
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-icon mui-icon-left-nav mui-pull-left" onclick="backPlayMovieList();"></a>
+			<h1 class="mui-title">我的名字叫可汗</h1>
+			<a class="mui-pull-right" onclick="backHomeForPlayMovie();"><span class="mui-icon mui-icon-home"></span></a>
+		</header>
+		<div class="mui-content">
+					<div class="videoDiv">
+						<video id="myVideo" 
+							style="background: transparent url('../images/cbd.jpg') no-repeat 0 0; " controls preload="Metadata" >
+							<source id="source" src="../test.mp4" type="video/mp4"></source> 
+						</video>
+					</div>
+			<div class="mui-card">
+				
+				
+				<div class="mui-card-content">
+					<div class="mui-card-content-inner">
+						<p>情感|宗教|剧情</p>
+						<p style="color: #333;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;这里显示电影摘要，让读者对文章内容有个粗略这里显示电影摘要，
+							让读者对文章内容有个粗略的概念...这里显示电影摘要，让读者对文章内容有个粗略的概念...这里显示电影摘要，
+							让读者对文章内容有个粗略的概念...的概念...</p>
+					</div>
+				</div>
+				<div class="mui-card-footer">
+					<a class="mui-card-link">Like</a>
+					<a class="mui-card-link">Comment</a>
+				</div>
+			</div>
+		</div>
+
+	<script type="text/javascript">
+		//----------------------------------video 相关配置------begin---------------------------------------------
+		$(function(){
+			//设置poster 为透明的
+			var $videoDiv = $(".videoDiv");
+		    var $video = $videoDiv.find("video");
+		    $video.attr("poster","data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==");
+			//调用调整大小
+		    autodivSize("videoDiv",0.4,1);
+		});
+		//自动适应屏幕大小函数
+		function autodivSize(_class,heightRatio,widthRatio){ //函数：获取尺寸
+		    //获取浏览器窗口高度
+		    var winHeight=0;
+		    if (window.innerHeight){
+		        winHeight = window.innerHeight;
+		    }else if ((document.body) && (document.body.clientHeight)){
+		        winHeight = document.body.clientHeight;
+		    }
+		    //通过深入Document内部对body进行检测，获取浏览器窗口高度
+		    if (document.documentElement && document.documentElement.clientHeight){
+		        winHeight = document.documentElement.clientHeight;
+		    }
+		    var winWidth=0;
+		    if (window.innerWidth){
+		        winWidth = window.innerWidth;
+		    }else if ((document.body) && (document.body.clientWidth)){
+		        winWidth = document.body.clientWidth;
+		    }
+		    //通过深入Document内部对body进行检测，获取浏览器窗口高度
+		    if (document.documentElement && document.documentElement.clientWidth){
+		        winWidth = document.documentElement.clientWidth;
+		    }
+		    //console.info("winHeight="+winHeight);
+		    //console.info("winWidth="+winWidth);
+		    //DIV高度为浏览器窗口的高度
+		    var regulateHeight = winHeight*heightRatio;
+		    var regulateWidth = winWidth*widthRatio
+	    	//console.info("height="+regulateHeight);
+		    //console.info("width="+regulateWidth);
+		    var $videoDiv = $("."+_class);
+		    $videoDiv.height(regulateHeight);
+		    $videoDiv.width(regulateWidth);
+		    //设置内部poster大小铺满外部div
+		    var $video = $videoDiv.find("video");
+		    //"100% 100%"
+		    $video.css("background-size","100% 100%");
+		    $video.width("100%");
+		    $video.height("100%");
+		}
+		 //浏览器窗口发生变化时同时变化DIV尺寸
+		window.onresize=function(){
+			autodivSize("videoDiv",0.4,1);
+		}
+		//----------------------------------video 相关配置------end---------------------------------------------
+		function backHomeForPlayMovie(){
+			document.getElementById("myVideo").pause();//暂停视频
+			$("#main-swiper-page").show();
+			$("#play-movie-page").hide();
+		}
+		
+		function backPlayMovieList(){
+			document.getElementById("myVideo").pause();//暂停视频
+			$("#play-movie-list-page").show();
+			$("#play-movie-page").hide();
+		}
+		
+	</script>

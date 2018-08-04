@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.ggc.ms.dao.IResourceDao">
+	<insert id="insert">
+		insert
+		into
+		t_resource
+		(reid,showname,retype,repath,picpath,readgrade,orderno,reinfo,searchkey,info,specialmark,author,inserttime)
+		values(#{reid},#{showname},#{retype},#{repath},#{picpath},#{readgrade},#{orderno},#{reinfo},#{searchkey},
+		#{info},#{specialmark},#{author},#{inserttime})
+	</insert>
+
+	<insert id="batchInsert">
+		insert
+		into
+		t_resource
+		values
+		<foreach collection="list" item="item" separator=",">
+			(#{item.reid},#{item.showname},#{item.retype},#{item.repath},#{item.picpath},#{item.readgrade},#{item.orderno},#{item.reinfo},
+			#{item.searchkey},#{item.info},#{specialmark},#{item.author},#{item.inserttime})
+		</foreach>
+	</insert>
+
+	<delete id="deleteById">
+		delete from t_resource where reid = #{reid}
+	</delete>
+
+	<delete id="batchDeleteById">
+		delete from t_resource where reid in
+		<foreach collection="list" item="item" open="(" close=")"
+			separator=",">
+			#{item}
+		</foreach>
+	</delete>
+
+	<select id="getById" resultType="ResourcePO">
+		select * from t_resource where
+		reid = #{reid}
+	</select>
+
+	<update id="update">
+		update
+		t_resource
+		set
+			showname = #{showname},
+			retype = #{retype},
+			repath = #{repath},
+			picpath = #{picpath},
+			readgrade = #{readgrade},
+			orderno = #{orderno},
+			reinfo = #{reinfo},
+			searchkey = #{searchkey},
+			info = #{info},
+			specialmark = #{specialmark},
+			author = #{author},
+			updatetime = #{updatetime}
+		where
+		reid = #{reid}
+	</update>
+
+	<select id="getAll" resultType="ResourcePO">
+		select * from t_resource order by
+		orderNo
+	</select>
+
+	<select id="getByType" resultType="ResourcePO">
+		select * from t_resource where
+		retype = #{retype} order by
+		orderNo
+	</select>
+	<!-- 获取推荐影片 -->
+	<select id="getSpecial" resultType="ResourcePO">
+		select * from t_resource where specialmark = #{specialmark} 
+		<include refid="condetion"></include>
+		order by orderNo
+	</select>
+	<select id="getSpecialTotal" resultType="Long">
+		select count(*) from t_resource where specialmark = #{specialmark}
+		<include refid="condetion"></include>
+	</select>
+
+	<!-- 根据info查询包含info的所有对象 -->
+	<select id="getByInfo" resultType="ResourcePO">
+		select * from t_resource where searchkey like '%' #{searchkey} '%' order by
+		orderNo
+	</select>
+
+	<select id="getByCondetion" resultType="ResourcePO" parameterType="ResourcePO">
+		select * from t_resource where readgrade &lt;= #{readgrade}
+			<include refid="condetion"></include>
+			order by orderNo
+	</select>
+	
+	<!-- 根据页查询页数据，由于测试中mysql不能用这种格式传参limit (1-1)*4,1*4，添加属性startNo,endNo-->
+	<select id="getByCondetionPage" resultType="ResourcePO" parameterType="ResourcePO">
+		select * from t_resource where readgrade &lt;= #{readgrade}
+			<include refid="condetion"></include>
+			order by orderNo
+			limit #{startNo},#{pageSize}
+	</select>
+	
+	<select id="getTotal" resultType="Long">
+		select count(*) from t_resource where readgrade &lt;= #{readgrade}
+		<include refid="condetion"></include>
+	</select>
+	
+	<!-- 查询条件 -->
+	<sql id="condetion">
+		<if test="retype !=null and retype !=''">
+			and retype = #{retype}
+		</if>
+		<if test="searchkey !=null and searchkey !=''">
+			and searchkey like '%' #{searchkey} '%'
+			or showname like '%' #{searchkey} '%'
+		</if>
+	</sql>
+
+</mapper>
