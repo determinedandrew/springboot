@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.gg.springboot.mapper.IRiskInfoMapper">
+
+	<select id="getRiskInfos" resultType="com.gg.springboot.model.RiskInfo" parameterType="com.gg.springboot.model.RiskInfo">
+
+		SELECT TNCBP.PRODUCT_CODE AS RISKCODE,
+		TBP.PRODUCT_NAME_SYS AS RISKNAME,
+		TNCP.PREM_FREQ AS PAYINTV,
+		TNCP.CHARGE_YEAR AS PAYPERIOD,
+		TNCP.AMOUNT,
+		TNCP.COVERAGE_YEAR AS INSUYEAR
+		FROM APP___NB__DBUSER.T_NB_CONTRACT_BUSI_PROD TNCBP
+		JOIN APP___NB__DBUSER.T_NB_CONTRACT_PRODUCT TNCP
+		ON TNCP.BUSI_ITEM_ID = TNCBP.BUSI_ITEM_ID
+		JOIN APP___NB__DBUSER.T_BUSINESS_PRODUCT TBP
+		ON TBP.BUSINESS_PRD_ID = TNCBP.BUSI_PRD_ID
+		WHERE TNCP.APPLY_CODE = #{riskCode}
+
+
+	</select>
+
+
+</mapper>
