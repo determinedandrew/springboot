@@ -25,7 +25,7 @@ public class MyController3 {
 	@GetMapping("/getDataBase")
 	public String getDataBase(Model model){
 		RiskInfo riskInfo = new RiskInfo();
-		riskInfo.setRiskCode("00000045809943");
+		riskInfo.setRiskCode("1000048565475");
 		List<RiskInfo> riskInfos = riskInfoMapper.getRiskInfos(riskInfo);
 		model.addAttribute("jspInfo", riskInfos);
 		return "index";
