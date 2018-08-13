@@ -6,15 +6,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.gg.springboot.mapper.IRiskInfoMapper">
 
 	<select id="getRiskInfos" resultType="com.gg.springboot.model.RiskInfo" parameterType="com.gg.springboot.model.RiskInfo">
-
-		SELECT TNCP.PRODUCT_CODE AS RISKCODE,
-		    TNCP.PREM_FREQ AS PAYINTV,
-		    TNCP.CHARGE_YEAR AS PAYPERIOD,
-		    TNCP.AMOUNT,
-		    TNCP.COVERAGE_YEAR AS INSUYEAR
-		    FROM APP___PAS__DBUSER.T_CONTRACT_PRODUCT TNCP
-		    WHERE TNCP.ITEM_ID = #{riskCode}
-
+		<![CDATA[
+			SELECT TNCP.PRODUCT_CODE AS RISKCODE,
+		          TNCP.PREM_FREQ AS PAYINTV,
+		          TNCP.CHARGE_YEAR AS PAYPERIOD,
+		          TNCP.AMOUNT,
+		          TNCP.COVERAGE_YEAR AS INSUYEAR
+		          FROM APP___PAS__DBUSER.T_CONTRACT_PRODUCT TNCP
+		          WHERE TNCP.ITEM_ID != #{riskCode}
+		          AND ROWNUM <= 500
+ 		]]>
 
 	</select>
 
